@@ -11,6 +11,7 @@ const App = () => {
   const handleNeutralClick = () => { setNeutral(neutral + 1) }
   const handleBadClick = () => { setBad(bad + 1) }
 
+
   return (
     <div>
       <h1> give feedback </h1>
@@ -29,6 +30,7 @@ const App = () => {
 
       </p>
     </div>
+
   )
 }
 
