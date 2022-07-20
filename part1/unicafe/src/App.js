@@ -1,5 +1,6 @@
 
 import { useState } from "react"
+import './App.css';
 
 const Button = (props) => {
   return (
@@ -26,9 +27,14 @@ const Statistics = (props) => {
 
 const StatisticLine = (props) => {
   return (
-    <div>
-      {props.text} {props.value}
-    </div>
+    <table>
+      <tbody>
+        <tr >
+          <th align="left" color="">{props.text}</th>
+          <th align="right"> {props.value}</th>
+        </tr>
+      </tbody>
+    </table>
   )
 }
 
