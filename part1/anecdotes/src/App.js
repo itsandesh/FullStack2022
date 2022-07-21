@@ -1,8 +1,11 @@
 import { useState } from 'react'
 
+
 const Display = (props) => {
   return (
-    < div > {props.anecdotes[props.selected]}</div >
+    < div > {props.anecdotes[props.selected]} <br></br>
+      has {props.votesCount} votes</div >
+
   )
 }
 
@@ -18,15 +21,30 @@ const App = () => {
   ]
 
   const [selected, setSelected] = useState(0)
+  const [allVotes, setAllVotes] = useState(Array(7).fill(0))
+
+  console.log(allVotes)
+
+  const handleVoteClick = () => {
+    const newAllVotes = [...allVotes]
+    newAllVotes[selected] += 1
+    setAllVotes(newAllVotes)
+  }
+
+
   const handleClick = () => { setSelected(selected + 1) }
+
 
   if (selected === 7) {
     return (setSelected(0))
   }
+
   return (
     <div>
-      <Display anecdotes={anecdotes} selected={selected} setSelected={setSelected} />
-
+      <Display anecdotes={anecdotes} selected={selected} setSelected={setSelected} votesCount={allVotes[selected]} />
+      <button onClick={handleVoteClick}>
+        vote
+      </button>
       <button onClick={handleClick}>
         next anectode
       </button>
