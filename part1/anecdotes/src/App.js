@@ -1,11 +1,26 @@
 import { useState } from 'react'
 
-
 const Display = (props) => {
   return (
     < div > {props.anecdotes[props.selected]} <br></br>
       has {props.votesCount} votes</div >
+  )
+}
 
+const MostVotes = ({ allVotes, anecdotes }) => {
+  const highestVoteCount = Math.max(...allVotes)
+  const winnerIndex = allVotes.indexOf(highestVoteCount)
+  const winner = anecdotes[winnerIndex]
+  if (highestVoteCount === 0) {
+    return (
+      <p>No votes </p>
+    )
+  }
+  return (
+    <div>
+      <p>{winner}</p>
+      <p>has {highestVoteCount} votes</p>
+    </div>
   )
 }
 
@@ -31,9 +46,7 @@ const App = () => {
     setAllVotes(newAllVotes)
   }
 
-
   const handleClick = () => { setSelected(selected + 1) }
-
 
   if (selected === 7) {
     return (setSelected(0))
@@ -41,6 +54,7 @@ const App = () => {
 
   return (
     <div>
+      <h2>Anectode of the day</h2>
       <Display anecdotes={anecdotes} selected={selected} setSelected={setSelected} votesCount={allVotes[selected]} />
       <button onClick={handleVoteClick}>
         vote
@@ -48,6 +62,8 @@ const App = () => {
       <button onClick={handleClick}>
         next anectode
       </button>
+      <h2>Anectode with most votes</h2>
+      <MostVotes anecdotes={anecdotes} allVotes={allVotes} />
     </div>
   )
 }
