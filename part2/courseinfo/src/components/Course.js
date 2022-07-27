@@ -1,12 +1,12 @@
 
-const Course = ({ course }) => {
-
+const Courses = ({ courses }) => {
     return (
         <div>
-            <Header course={course} />
-            <Content course={course} />
-            <Exercises course={course.parts} />
-
+            {courses.map(course => <div key={course.id}>
+                <Header course={course.name} />
+                <Content course={course.parts} />
+                <Exercises course={course.parts} />
+            </div>)}
         </div>
     )
 }
@@ -14,7 +14,8 @@ const Course = ({ course }) => {
 const Header = ({ course }) => {
     return (
         <div>
-            <h1> {course.name}  </h1>
+
+            <h2> {course}  </h2>
         </div>
     )
 }
@@ -22,7 +23,7 @@ const Header = ({ course }) => {
 const Content = ({ course }) => {
     return (
         <div >
-            {course.parts.map(part =>
+            {course.map(part =>
                 <p key={part.id}>
                     {part.name} {part.exercises}
                 </p>)}
@@ -33,13 +34,13 @@ const Content = ({ course }) => {
 // used reduce method to calculate total number of exercises 
 const Exercises = ({ course }) => {
     return (
-        <h3>
+        <h4>
             total of {course.reduce((sum, part) => {
                 return sum + part.exercises
             }, 0)} exercises
-        </h3>
+        </h4>
 
     )
 }
 
-export default Course
+export default Courses
