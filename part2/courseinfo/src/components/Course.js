@@ -19,7 +19,7 @@ const Header = ({ course }) => {
         </div>
     )
 }
-//using map method to show parts name and exercises
+// Using map method to show parts name and exercises //
 const Content = ({ course }) => {
     return (
         <div >
@@ -31,7 +31,7 @@ const Content = ({ course }) => {
     )
 }
 
-// used reduce method to calculate total number of exercises 
+// Used reduce method to calculate total number of exercises //
 const Exercises = ({ course }) => {
     return (
         <h4>
@@ -42,5 +42,6 @@ const Exercises = ({ course }) => {
 
     )
 }
-
 export default Courses
+
+//I have already seperated the Course component in previous exercise as said in Exercise 2.5. //
