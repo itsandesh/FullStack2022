@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
 
-function App() {
+const App = () => {
+  const [persons, setPersons] = useState([
+    { name: 'Arto Hellas' }
+  ])
+  const [newName, setNewName] = useState('')
+
+  const addContact = (event) => {
+    event.preventDefault()
+    console.log('button clicked', event.target)
+    event.preventDefault()
+    const nameObject = {
+      name: newName,
+      date: new Date().toISOString(),
+      important: Math.random() < 0.5,
+      id: persons.length + 1,
+    }
+    // console.log(persons)
+
+    setPersons(persons.concat(nameObject))
+    setNewName('')
+  }
+  const handleNameChange = (event) => {
+    // console.log(event.target.value)
+    setNewName(event.target.value)
+  }
+
+  const ShowContacts = () => {
+    return (
+      persons.map(person =>
+        <p key={person.name} >
+          {person.name}
+        </p>)
+    )
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <div>
+      <h2>Phonebook</h2>
+      <form onSubmit={addContact}>
+        <div>
+          name: <input value={newName} onChange={handleNameChange} />
+        </div>
+        <div>
+          <button type="submit">add</button>
+        </div>
+      </form>
+      <h2>Numbers</h2>
+      <ShowContacts />
+    </div >
+  )
 }
 
-export default App;
+export default App
