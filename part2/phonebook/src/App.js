@@ -7,6 +7,9 @@ const App = () => {
   const [newName, setNewName] = useState('')
 
   const addContact = (event) => {
+    if (persons.some((person) => person.name === newName)) {
+      alert(newName + ' is already added to phonebook')
+    }
     event.preventDefault()
     console.log('button clicked', event.target)
     event.preventDefault()
@@ -16,39 +19,37 @@ const App = () => {
       important: Math.random() < 0.5,
       id: persons.length + 1,
     }
-    // console.log(persons)
-
     setPersons(persons.concat(nameObject))
     setNewName('')
   }
   const handleNameChange = (event) => {
-    // console.log(event.target.value)
+    console.log(event.target.value)
     setNewName(event.target.value)
   }
 
-  const ShowContacts = () => {
-    return (
-      persons.map(person =>
-        <p key={person.name} >
-          {person.name}
-        </p>)
-    )
-  }
   return (
-    <div>
+    <div key={persons.name}>
       <h2>Phonebook</h2>
       <form onSubmit={addContact}>
-        <div>
-          name: <input value={newName} onChange={handleNameChange} />
-        </div>
+        <input
+          value={newName}
+          onChange={handleNameChange}
+        />
         <div>
           <button type="submit">add</button>
+
         </div>
       </form>
       <h2>Numbers</h2>
-      <ShowContacts />
-    </div >
+      <div>
+        {persons.map(person => (
+          <div key={person.name}> {person.name} </div>
+        ))}
+      </div>
+
+    </div>
   )
 }
 
 export default App
+
