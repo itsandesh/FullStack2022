@@ -6,7 +6,13 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
     "axios": "^0.27.2",
+=======
+>>>>>>> ba89fef996d9c4ba185f6e5dff609de33c877bdf
+>>>>>>> a9a85616b6fdb1a5fc79aaaa8fedaaf05d5420de
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
@@ -16,8 +22,16 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+<<<<<<< HEAD
+    "eject": "react-scripts eject"
+=======
+<<<<<<< HEAD
     "eject": "react-scripts eject",
     "server": "json-server -p3001 --watch db.json"
+=======
+    "eject": "react-scripts eject"
+>>>>>>> ba89fef996d9c4ba185f6e5dff609de33c877bdf
+>>>>>>> a9a85616b6fdb1a5fc79aaaa8fedaaf05d5420de
   },
   "eslintConfig": {
     "extends": [
@@ -36,8 +50,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+<<<<<<< HEAD
+  }
+}
+=======
+<<<<<<< HEAD
   },
   "devDependencies": {
     "json-server": "^0.17.0"
   }
 }
+=======
+  }
+}
+>>>>>>> ba89fef996d9c4ba185f6e5dff609de33c877bdf
+>>>>>>> a9a85616b6fdb1a5fc79aaaa8fedaaf05d5420de
