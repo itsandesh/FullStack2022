@@ -23,7 +23,6 @@ const App = () => {
         setCountriesList(
             countries.filter((country) =>
                 country.name.common.toLowerCase().includes(search)))
-
     }
     // console.log(countriesList);
     const Countryinfo = ({ country }) => {
@@ -40,7 +39,6 @@ const App = () => {
                     ))}
                 </ul>
                 <img src={country.flags.png} width='150' alt={''} />
-
             </div>
         )
     }
@@ -63,7 +61,8 @@ const App = () => {
                             : (
                                 countriesList.map(country => (
                                     <div key={country.name.official}>
-                                        {country.name.common}</div>))
+                                        {country.name.common}
+                                        <button onClick={() => { setCountriesList([country]) }}>show</button></div>))
                             )
                     )
                 }
@@ -71,7 +70,6 @@ const App = () => {
                     ? <Countryinfo country={countriesList[0]} />
                     : []
                 }
-
             </div>
         </div>
     )
