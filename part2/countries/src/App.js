@@ -6,6 +6,10 @@ const App = () => {
     const [countries, setCountries] = useState([]);
     const [countriesList, setCountriesList] = useState([]);
 
+
+
+
+
     useEffect(() => {
         axios
             .get('https://restcountries.com/v3.1/all')
@@ -13,10 +17,8 @@ const App = () => {
                 setCountries(response.data)
             })
     }, [])
-    console.log('render', countries.length, 'Country')
 
     const handleSearchfilter = (event) => {
-
         const search = (event.target.value)
         console.log(search)
         setSearch(search)
@@ -39,7 +41,39 @@ const App = () => {
                     ))}
                 </ul>
                 <img src={country.flags.png} width='150' alt={''} />
+                <h4>Weather in {country.capital}</h4>
+                <Weatherinfo location={country.capital} country={country} />
             </div>
+        )
+    }
+    const Weatherinfo = ({ location }) => {
+
+        const [weather, setWeather] = useState([])
+        const api_key = process.env.REACT_APP_API_KEY
+
+        console.log(location);
+        console.log(api_key);
+
+
+        useEffect(() => {
+            axios
+                .get(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${api_key}`)
+                .then(response => {
+                    setWeather(response.data);
+                    // console.log(weather)
+                    console.log('sasa');
+
+                    // setCountries(response.data)
+                    console.log(response.data);
+
+                })
+        }, [])
+        // console.log("country array", country)
+        return (
+
+            console.log(weather?.weather?.[0]?.main)
+
+
         )
     }
     return (
